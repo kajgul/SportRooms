@@ -37,6 +37,8 @@ namespace SportRooms.Entities
             modelBuilder.Entity<Match>()
                 .Property(m => m.LeageId).IsRequired();
 
+            modelBuilder.Entity<Bet>()
+                .Property(b => b.MatchId).IsRequired();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
