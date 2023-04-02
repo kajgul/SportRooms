@@ -30,8 +30,9 @@ namespace SportRooms.Entities
                 .Property(l => l.Name)
                 .IsRequired()
                 .HasMaxLength(50);
-                
 
+            modelBuilder.Entity<Player>()
+                .Property(p => p.RoomId).IsRequired();
 
         }
 
