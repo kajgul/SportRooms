@@ -20,7 +20,7 @@ namespace SportRooms.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //dodać odpowiednie ustawienia dla tych klas
+            
             modelBuilder.Entity<Room>()
                 .Property(r => r.Name)
                 .IsRequired()
@@ -33,6 +33,9 @@ namespace SportRooms.Entities
 
             modelBuilder.Entity<Player>()
                 .Property(p => p.RoomId).IsRequired();
+
+            modelBuilder.Entity<Match>()
+                .Property(m => m.LeageId).IsRequired();
 
         }
 
