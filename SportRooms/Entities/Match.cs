@@ -15,8 +15,8 @@ namespace SportRooms.Entities
         public string TeamBName { get; set; }
         public byte TeamAScore { get; set; }
         public byte TeamBScore { get; set; }
-        public int LeageId { get; set; }
-        public virtual League Leage { get; set; }
+        public int LeagueId { get; set; }
+        public virtual League League { get; set; }
 
     }
 }

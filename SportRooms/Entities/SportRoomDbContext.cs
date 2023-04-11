@@ -10,7 +10,7 @@ namespace SportRooms.Entities
 {
     public class SportRoomDbContext : DbContext
     {
-        private string _connectionString = "Server=DESKTOP-93NOMA2\\SQLEXPRESS;Database=RestaurantDb;Trusted_Connection=True;";
+        private string _connectionString = "Server=DESKTOP-93NOMA2\\SQLEXPRESS;Database=SportRoomsDb;Trusted_Connection=True;";
 
         public DbSet<Room> Rooms { get; set; }
         public DbSet<League> Leagues { get; set; }
@@ -35,8 +35,19 @@ namespace SportRooms.Entities
                 .Property(p => p.RoomId).IsRequired();
 
             modelBuilder.Entity<Match>()
-                .Property(m => m.LeageId).IsRequired();
+                .Property(m => m.LeagueId).IsRequired();
 
+            modelBuilder.Entity<Bet>()
+                .Property(b => b.PlayerId).IsRequired();
+
+            modelBuilder.Entity<Bet>()
+               .Property(b => b.MatchId).IsRequired();
+
+            modelBuilder.Entity<Bet>()
+                .HasOne(b => b.Player)
+                .WithMany(p => p.Bets)
+                .HasForeignKey(b => b.PlayerId)
+                .OnDelete(DeleteBehavior.NoAction);
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -13,5 +13,6 @@ namespace SportRooms.Entities
         public int UserId { get; set; }
         public int RoomId { get; set; }
         public virtual Room Room { get; set; }
+        public List<Bet> Bets { get; set; }
     }
 }
